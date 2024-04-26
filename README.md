@@ -11,17 +11,27 @@ Node.js v16 or higher. You can download it from [here](https://nodejs.org/en/dow
 ```
 npm install
 ```
-# Database Configuration
+
+## Database Configuration
 To connect to your MySQL database, you need to update the database configuration in the `server.js` file. Replace the following placeholders with your actual database details:
 - `host`: Your database host
 - `user`: Your database user
 - `password`: Your database password
 - `database`: Your database name
 
-# Running the Server
+## Customizing Your Query
+You can customize your database query in the server.js file.
+
+For example, the current query is:
+```
+var sql = "SELECT * FROM members WHERE id = 1";
+```
+You can modify this line to fit your specific needs. Be sure to follow the correct SQL syntax for your queries.
+
+## Running the Server
 ```
 node server.js
 ```
 
-# Accessing the Demo
+## Accessing the Demo
 Once the server is running, you can access the demo by opening your web browser and navigating to `http://localhost:3000`.
