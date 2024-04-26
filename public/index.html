@@ -1,0 +1,48 @@
+<html>
+
+<head>
+    <title>My db rows</title>
+</head>
+
+<body>
+    <p>This is HTML</p>
+    <div id="table"></div>
+    <script type="text/javascript">
+        fetch("/data")
+            .then((res) => {
+                if (res.ok) {
+                    return res.json();
+                }
+            })
+            .then((rows) => {
+                const table = document.getElementById("table");
+                const thead = document.createElement("thead");
+                const tbody = document.createElement("tbody");
+                const tr = document.createElement("tr");
+                const ths = Object.keys(rows[0]).map((key) => {
+                    const th = document.createElement("th");
+                    th.textContent = key;
+                    return th;
+                });
+                tr.append(...ths);
+                thead.append(tr);
+                table.append(thead);
+                rows.forEach((row) => {
+                    const tr = document.createElement("tr");
+                    const tds = Object.values(row).map((value) => {
+                        const td = document.createElement("td");
+                        td.textContent = value;
+                        return td;
+                    });
+                    tr.append(...tds);
+                    tbody.append(tr);
+                });
+                table.append(tbody);
+
+
+            })
+            .catch(console.log);
+    </script>
+</body>
+
+</html>
